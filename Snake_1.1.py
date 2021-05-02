@@ -1,6 +1,6 @@
 import pygame
 import random
-bg = pygame.image.load("Pozadie_snake.jpg")
+bg = pygame.image.load("Pozadie.jpg")
 #intialize the pygame
 pygame.init()
 #ROZLÍŠENIE
@@ -25,10 +25,15 @@ farba_cervena = (255, 0, 0)
 farba_cierna = (0, 0, 0)
 #FONT
 font1 = pygame.font.SysFont("Eras Bold ITC", 40)
+font2 = pygame.font.SysFont("Showcard Gothic", 80)
 #TEXTY
 def text_obrazovky(text, farba, x, y):
     text_obrazovky = font1.render(text, True, farba)
     screen.blit(text_obrazovky, [x,y])
+
+def text_obrazovky2(text, farba, x, y):
+    text_obrazovky2 = font2.render(text, True, farba)
+    screen.blit(text_obrazovky2, [x,y])
 #HAD
 def snake (screen, farba, list, velkost_hada):
     for x,y in list:
@@ -53,7 +58,7 @@ def game():
     while not zrusit_hru:
         if koniec_hry:
             screen.blit(bg, (0, 0))
-            text_obrazovky("Prehral si, stlač ENTER pre pokračovanie", farba_cervena, 120, 250)
+            text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -119,6 +124,7 @@ def game():
         clock.tick(fps)
     pygame.quit()
     quit()
+
 def game2():
     zrusit_hru = False
     koniec_hry = False
@@ -137,7 +143,7 @@ def game2():
     while not zrusit_hru:
         if koniec_hry:
             screen.blit(bg, (0, 0))
-            text_obrazovky("Prehral si, stlač ENTER pre pokračovanie", farba_cervena, 120, 250)
+            text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -203,6 +209,7 @@ def game2():
         clock.tick(fps)
     pygame.quit()
     quit()
+
 def game3():
     zrusit_hru = False
     koniec_hry = False
@@ -222,7 +229,7 @@ def game3():
     while not zrusit_hru:
         if koniec_hry:
             screen.blit(bg, (0, 0))
-            text_obrazovky("Prehral si, stlač ENTER pre pokračovanie", farba_cervena, 120, 250)
+            text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -293,8 +300,8 @@ def menu():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky(" QUIT(2)", farba_cervena, 350, 400)
-        text_obrazovky("Levely(1)", farba_cervena, 350, 300)
+        text_obrazovky(" QUIT(2)", farba_cervena, 325, 300)
+        text_obrazovky("Levely(1)", farba_cervena, 325, 200)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -304,6 +311,7 @@ def menu():
                     menu_levely()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
+
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
@@ -318,6 +326,6 @@ def menu_levely():
                     game()
                 if event.key == pygame.K_KP1:
                     game2()
-                if event.key == pygame.K_KP1:
+                if event.key == pygame.K_KP3:
                     game3()
 menu()
