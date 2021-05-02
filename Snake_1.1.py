@@ -328,4 +328,7 @@ def menu_levely():
                     game2()
                 if event.key == pygame.K_KP3:
                     game3()
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 menu()
