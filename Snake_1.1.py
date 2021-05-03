@@ -101,7 +101,7 @@ def game():
                 dlzka += 5
 
             screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score * 10), farba_biela, 10, 5)
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
             pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
 
@@ -187,7 +187,7 @@ def game2():
 
 
             screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score * 10), farba_biela, 10, 5)
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
             pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
 
@@ -272,7 +272,7 @@ def game3():
                 dlzka += 5
 
             screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score * 10), farba_biela, 10, 5)
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
             pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
 
