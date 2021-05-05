@@ -84,7 +84,8 @@ def game():
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        game()
+                        menu_levely()
+
 
         else:
 
@@ -172,7 +173,7 @@ def game2():
     while not zrusit_hru:
         if koniec_hry:
             screen.blit(bg, (0, 0))
-            text_obrazovky2("  GAME OVER", farba_cierna, 180, 250)
+            text_obrazovky2("  GAME OVER", farba_cierna, 155, 250)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -180,7 +181,7 @@ def game2():
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        game2()
+                        menu_levely()
 
         else:
 
@@ -293,7 +294,7 @@ def game3():
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        game3()
+                        menu_levely()
 
         else:
 
@@ -359,26 +360,30 @@ def menu():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("Levely(1)", farba_cervena, 325, 200)
-        text_obrazovky("Tabuľka(2)", farba_cervena, 320, 280)
-        text_obrazovky(" QUIT(3)", farba_cervena, 325, 350)
+        text_obrazovky("Level(1)", farba_cervena, 330, 200)
+        text_obrazovky("Tabuľka(2)", farba_cervena, 315, 300)
+        text_obrazovky(" QUIT(3)", farba_cervena, 330, 500)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP3:
                     zrusit_hru = True
+                    quit()
                 if event.key == pygame.K_KP1:
                     menu_levely()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
+                pygame.quit()
+                quit()
 
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("Classic (1)", farba_cervena, 325, 200)
-        text_obrazovky("Multi Apple (2)", farba_cervena, 325, 300)
-        text_obrazovky("Level 3 (3)", farba_cervena, 325, 400)
+        text_obrazovky("Classic (1)", farba_cervena, 320, 150)
+        text_obrazovky("Multi Apple (2)", farba_cervena, 290, 250)
+        text_obrazovky("Level 3 (3)", farba_cervena, 320, 350)
+        text_obrazovky("BACK (4)", farba_cervena, 330, 500)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -388,7 +393,8 @@ def menu_levely():
                     game2()
                 if event.key == pygame.K_KP3:
                     game3()
+                if event.key == pygame.K_KP4:
+                    menu()
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
 menu()
