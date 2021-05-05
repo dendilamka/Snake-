@@ -1,7 +1,6 @@
 import pygame
 import random
 from pygame import mixer
-bg = pygame.image.load("Pozadie.jpg")
 #intialize the pygame
 pygame.init()
 #Spustenie hudby
@@ -21,8 +20,12 @@ screen = pygame.display.set_mode(res)
 #ŠÍRKA A VÝŠKA
 sirka = screen.get_width()
 vyska = screen.get_height()
+#POZADIE
+bg = pygame.image.load("pozadie_menu.jpg")
+bg2 = pygame.image.load("pozadie_menulevely.jpg")
+bg3 = pygame.image.load("Pozadie.jpg")
 #NÁZOV a Icona
-pygame.display.set_caption("Snake")
+pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
 pygame.display.set_icon(icon)
 pygame.display.update()
@@ -35,8 +38,9 @@ farba_zelena = (0, 128, 0)
 farba_cervena = (255, 0, 0)
 farba_cierna = (0, 0, 0)
 #FONT
-font1 = pygame.font.SysFont("Eras Bold ITC", 40)
+font1 = pygame.font.SysFont("Edo", 35)
 font2 = pygame.font.SysFont("Showcard Gothic", 80)
+font3 = pygame.font.SysFont("MV Boli", 30)
 #TEXTY
 def text_obrazovky(text, farba, x, y):
     text_obrazovky = font1.render(text, True, farba)
@@ -45,9 +49,14 @@ def text_obrazovky(text, farba, x, y):
 def text_obrazovky2(text, farba, x, y):
     text_obrazovky2 = font2.render(text, True, farba)
     screen.blit(text_obrazovky2, [x,y])
+
+def text_obrazovky3(text, farba, x, y):
+    text_obrazovky3 = font3.render(text, True, farba)
+    screen.blit(text_obrazovky3, [x,y])
+
 #PAUSE
 def pause():
-    screen.blit(bg, (0, 0))
+    screen.blit(bg3, (0, 0))
     text_obrazovky2("PAUSE", farba_cierna, 180, 250)
 
 #HAD
@@ -74,7 +83,8 @@ def game():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            screen.blit(bg, (0, 0))
+            screen.blit(bg3, (0, 0))
+            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
 
@@ -122,10 +132,10 @@ def game():
                 dlzka += 5
 
 
-            screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
+            screen.blit(bg3, (0, 0))
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 4)
 
 
             hlava = []
@@ -172,7 +182,8 @@ def game2():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            screen.blit(bg, (0, 0))
+            screen.blit(bg3, (0, 0))
+            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("  GAME OVER", farba_cierna, 155, 250)
 
             for event in pygame.event.get():
@@ -238,13 +249,13 @@ def game2():
                 dlzka += 5
 
 
-            screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
+            screen.blit(bg3, (0, 0))
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
             pygame.draw.rect(screen, farba_cervena, [jablko1_x, jablko1_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko2_x, jablko2_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko3_x, jablko3_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko4_x, jablko4_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
 
             hlava = []
             hlava.append(snake_x)
@@ -285,7 +296,8 @@ def game3():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            screen.blit(bg, (0, 0))
+            screen.blit(bg3, (0, 0))
+            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
             for event in pygame.event.get():
@@ -329,10 +341,10 @@ def game3():
                 jablko_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            screen.blit(bg, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 5)
+            screen.blit(bg3, (0, 0))
+            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_cierna, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
 
 
             hlava = []
@@ -360,9 +372,9 @@ def menu():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("Level(1)", farba_cervena, 330, 200)
-        text_obrazovky("Tabuľka(2)", farba_cervena, 315, 300)
-        text_obrazovky(" QUIT(3)", farba_cervena, 330, 500)
+        text_obrazovky("PLAY", farba_biela, 360, 210)
+        text_obrazovky("LEADERBOARD", farba_biela, 300, 315)
+        text_obrazovky(" EXIT", farba_biela, 355, 505)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -379,11 +391,11 @@ def menu():
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
-        screen.blit(bg, (0, 0))
-        text_obrazovky("Classic (1)", farba_cervena, 320, 150)
-        text_obrazovky("Multi Apple (2)", farba_cervena, 290, 250)
-        text_obrazovky("Level 3 (3)", farba_cervena, 320, 350)
-        text_obrazovky("BACK (4)", farba_cervena, 330, 500)
+        screen.blit(bg2, (0, 0))
+        text_obrazovky("CLASSIC", farba_biela, 330, 202)
+        text_obrazovky("MULTI APPLE", farba_biela, 305, 287)
+        text_obrazovky("LEVEL 3", farba_biela, 335, 375)
+        text_obrazovky("BACK", farba_biela, 350, 522)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
