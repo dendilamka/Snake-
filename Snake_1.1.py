@@ -124,7 +124,7 @@ def game():
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
-            if abs(snake_x - jablko_x) < 10 and abs(snake_y - jablko_y) < 10:
+            if abs(snake_x - jablko_x) < 20 and abs(snake_y - jablko_y) < 20:
                 efekt.play()
                 score += 1
                 jablko_x = random.randint(20, sirka - 30)
@@ -220,28 +220,28 @@ def game2():
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
-            if abs(snake_x - jablko1_x) < 10 and abs(snake_y - jablko1_y) < 10:
+            if abs(snake_x - jablko1_x) < 20 and abs(snake_y - jablko1_y) < 20:
                 efekt.play()
                 score += 1
                 jablko1_x = random.randint(20, sirka - 30)
                 jablko1_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            if abs(snake_x - jablko2_x) < 10 and abs(snake_y - jablko2_y) < 10:
+            if abs(snake_x - jablko2_x) < 20 and abs(snake_y - jablko2_y) < 20:
                 efekt.play()
                 score += 1
                 jablko2_x = random.randint(20, sirka - 30)
                 jablko2_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            if abs(snake_x - jablko3_x) < 10 and abs(snake_y - jablko3_y) < 10:
+            if abs(snake_x - jablko3_x) < 20 and abs(snake_y - jablko3_y) < 20:
                 efekt.play()
                 score += 1
                 jablko3_x = random.randint(20, sirka - 30)
                 jablko3_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            if abs(snake_x - jablko4_x) < 10 and abs(snake_y - jablko4_y) < 10:
+            if abs(snake_x - jablko4_x) < 20 and abs(snake_y - jablko4_y) < 20:
                 efekt.play()
                 score += 1
                 jablko4_x = random.randint(20, sirka - 30)
@@ -334,7 +334,7 @@ def game3():
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
-            if abs(snake_x - jablko_x) < 10 and abs(snake_y - jablko_y) < 10:
+            if abs(snake_x - jablko_x) < 20 and abs(snake_y - jablko_y) < 20:
                 efekt.play()
                 score += 1
                 jablko_x = random.randint(20, sirka - 30)
