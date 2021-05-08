@@ -60,12 +60,13 @@ def pause():
     text_obrazovky2("PAUSE", farba_cierna, 180, 250)
 
 #HAD
-def snake (screen, farba, list, velkost_hada):
+def snake(screen, farba, list, velkost_hada):
     for x,y in list:
         pygame.draw.rect(screen, farba, [x,y, velkost_hada, velkost_hada])
 
 #HRA
 def game():
+    posledný_pohyb = "ziadny"
     zrusit_hru = False
     koniec_hry = False
     snake_x = 400
@@ -74,7 +75,6 @@ def game():
     velocity_y = 0
     list = []
     dlzka = 1
-
     jablko_x = random.randint(20, sirka - 20)
     jablko_y = random.randint(60, vyska - 20)
     score = 0
@@ -87,7 +87,6 @@ def game():
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
 
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     zrusit_hru = True
@@ -96,7 +95,6 @@ def game():
                     if event.key == pygame.K_RETURN:
                         menu_levely()
 
-
         else:
 
             for event in pygame.event.get():
@@ -104,22 +102,30 @@ def game():
                     zrusit_hru = True
 
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RIGHT:
-                        velocity_x = init_velocity
-                        velocity_y = 0
 
+                    if event.key == pygame.K_RIGHT:
+                        if (posledný_pohyb != "do lava"):
+                            velocity_x = init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do prava"
 
                     if event.key == pygame.K_LEFT:
-                        velocity_x = - init_velocity
-                        velocity_y = 0
+                        if (posledný_pohyb != "do prava"):
+                            velocity_x = - init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do lava"
 
                     if event.key == pygame.K_UP:
-                        velocity_y = - init_velocity
-                        velocity_x = 0
+                        if (posledný_pohyb != "dole"):
+                            velocity_y = - init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "hore"
 
                     if event.key == pygame.K_DOWN:
-                        velocity_y = init_velocity
-                        velocity_x = 0
+                        if (posledný_pohyb != "hore"):
+                            velocity_y = init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "dole"
 
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
@@ -131,12 +137,10 @@ def game():
                 jablko_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-
             screen.blit(bg3, (0, 0))
             text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 4)
-
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
 
             hlava = []
             hlava.append(snake_x)
@@ -158,8 +162,8 @@ def game():
         clock.tick(fps)
     pygame.quit()
     quit()
-
 def game2():
+    posledný_pohyb = "ziadny"
     zrusit_hru = False
     koniec_hry = False
     snake_x = 400
@@ -194,28 +198,51 @@ def game2():
                     if event.key == pygame.K_RETURN:
                         menu_levely()
 
+
         else:
 
             for event in pygame.event.get():
+
                 if event.type == pygame.QUIT:
                     zrusit_hru = True
 
                 if event.type == pygame.KEYDOWN:
+
                     if event.key == pygame.K_RIGHT:
-                        velocity_x = init_velocity
-                        velocity_y = 0
+
+                        if (posledný_pohyb != "do lava"):
+                            velocity_x = init_velocity
+
+                            velocity_y = 0
+
+                            posledný_pohyb = "do prava"
 
                     if event.key == pygame.K_LEFT:
-                        velocity_x = - init_velocity
-                        velocity_y = 0
+
+                        if (posledný_pohyb != "do prava"):
+                            velocity_x = - init_velocity
+
+                            velocity_y = 0
+
+                            posledný_pohyb = "do lava"
 
                     if event.key == pygame.K_UP:
-                        velocity_y = - init_velocity
-                        velocity_x = 0
+
+                        if (posledný_pohyb != "dole"):
+                            velocity_y = - init_velocity
+
+                            velocity_x = 0
+
+                            posledný_pohyb = "hore"
 
                     if event.key == pygame.K_DOWN:
-                        velocity_y = init_velocity
-                        velocity_x = 0
+
+                        if (posledný_pohyb != "hore"):
+                            velocity_y = init_velocity
+
+                            velocity_x = 0
+
+                            posledný_pohyb = "dole"
 
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
@@ -277,8 +304,8 @@ def game2():
         clock.tick(fps)
     pygame.quit()
     quit()
-
 def game3():
+    posledný_pohyb = "ziadny"
     zrusit_hru = False
     koniec_hry = False
     snake_x = 400
@@ -287,7 +314,6 @@ def game3():
     velocity_y = 0
     list = []
     dlzka = 1
-
     jablko_x = random.randint(20, sirka - 20)
     jablko_y = random.randint(60, vyska - 20)
     score = 0
@@ -315,21 +341,30 @@ def game3():
                     zrusit_hru = True
 
                 if event.type == pygame.KEYDOWN:
+
                     if event.key == pygame.K_RIGHT:
-                        velocity_x = init_velocity
-                        velocity_y = 0
+                        if (posledný_pohyb != "do lava"):
+                            velocity_x = init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do prava"
 
                     if event.key == pygame.K_LEFT:
-                        velocity_x = - init_velocity
-                        velocity_y = 0
+                        if (posledný_pohyb != "do prava"):
+                            velocity_x = - init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do lava"
 
                     if event.key == pygame.K_UP:
-                        velocity_y = - init_velocity
-                        velocity_x = 0
+                        if (posledný_pohyb != "dole"):
+                            velocity_y = - init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "hore"
 
                     if event.key == pygame.K_DOWN:
-                        velocity_y = init_velocity
-                        velocity_x = 0
+                        if (posledný_pohyb != "hore"):
+                            velocity_y = init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "dole"
 
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
@@ -345,7 +380,6 @@ def game3():
             text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
             pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
-
 
             hlava = []
             hlava.append(snake_x)
@@ -387,7 +421,6 @@ def menu():
                 zrusit_hru = True
                 pygame.quit()
                 quit()
-
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
@@ -410,3 +443,4 @@ def menu_levely():
             if event.type == pygame.QUIT:
                 pygame.quit()
 menu()
+
