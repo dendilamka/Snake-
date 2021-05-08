@@ -317,7 +317,7 @@ def game3():
     jablko_x = random.randint(20, sirka - 20)
     jablko_y = random.randint(60, vyska - 20)
     score = 0
-    init_velocity = 4
+    init_velocity = 6
     velkost_hada = 30
     fps = 60
     while not zrusit_hru:
@@ -369,12 +369,15 @@ def game3():
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
+
             if abs(snake_x - jablko_x) < 20 and abs(snake_y - jablko_y) < 20:
                 efekt.play()
                 score += 1
+                if ((score == 10) or (score == 20) or (score == 30) or (score == 40)):
+                    init_velocity = init_velocity + 1
                 jablko_x = random.randint(20, sirka - 30)
                 jablko_y = random.randint(60, vyska - 30)
-                dlzka += 5
+                dlzka += 10
 
             screen.blit(bg3, (0, 0))
             text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
@@ -427,7 +430,7 @@ def menu_levely():
         screen.blit(bg2, (0, 0))
         text_obrazovky("CLASSIC", farba_biela, 330, 202)
         text_obrazovky("MULTI APPLE", farba_biela, 305, 287)
-        text_obrazovky("LEVEL 3", farba_biela, 335, 375)
+        text_obrazovky("FASTER BIGGER", farba_biela, 290, 375)
         text_obrazovky("BACK", farba_biela, 350, 522)
         pygame.display.update()
         for event in pygame.event.get():
