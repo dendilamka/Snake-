@@ -1,6 +1,7 @@
 import pygame
 import random
 from pygame import mixer
+import time
 #intialize the pygame
 pygame.init()
 #Spustenie hudby
@@ -21,7 +22,7 @@ screen = pygame.display.set_mode(res)
 sirka = screen.get_width()
 vyska = screen.get_height()
 #POZADIE
-bg = pygame.image.load("pozadie_menu.jpg")
+bg = pygame.image.load("hlavnaplocha.jpg")
 bg2 = pygame.image.load("pozadie_menulevely.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
 bg4 = pygame.image.load("pozadie_hry.png")
@@ -57,8 +58,25 @@ def text_obrazovky3(text, farba, x, y):
 
 #PAUSE
 def pause():
-    screen.blit(bg3, (0, 0))
-    text_obrazovky2("PAUSE", farba_cierna, 180, 250)
+    paused = True
+    while paused:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_c:
+                    paused = False
+                elif event.key == pygame.K_e:
+                    pygame.quit()
+                    quit()
+
+        screen.blit(bg3, (0, 0))
+        text_obrazovky2("GAME PAUSED", farba_cierna, 125, 200)
+        text_obrazovky("Press C to continue or E to exit", farba_cierna, 205,380)
+        pygame.display.update()
+        clock.tick(10)
+
 
 #HAD
 def snake(screen, farba, list, velkost_hada):
@@ -127,6 +145,10 @@ def game():
                             velocity_y = init_velocity
                             velocity_x = 0
                             posledný_pohyb = "dole"
+
+                    elif event.key == pygame.K_p:
+                        pause()
+
 
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
@@ -213,37 +235,33 @@ def game2():
 
                         if (posledný_pohyb != "do lava"):
                             velocity_x = init_velocity
-
                             velocity_y = 0
-
                             posledný_pohyb = "do prava"
 
                     if event.key == pygame.K_LEFT:
 
                         if (posledný_pohyb != "do prava"):
                             velocity_x = - init_velocity
-
                             velocity_y = 0
-
                             posledný_pohyb = "do lava"
 
                     if event.key == pygame.K_UP:
 
                         if (posledný_pohyb != "dole"):
                             velocity_y = - init_velocity
-
                             velocity_x = 0
-
                             posledný_pohyb = "hore"
 
                     if event.key == pygame.K_DOWN:
 
                         if (posledný_pohyb != "hore"):
                             velocity_y = init_velocity
-
                             velocity_x = 0
-
                             posledný_pohyb = "dole"
+
+                    elif event.key == pygame.K_p:
+                        pause()
+
 
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
@@ -367,6 +385,10 @@ def game3():
                             velocity_x = 0
                             posledný_pohyb = "dole"
 
+                    elif event.key == pygame.K_p:
+                        pause()
+
+
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
@@ -410,13 +432,14 @@ def menu():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("PLAY", farba_biela, 360, 210)
-        text_obrazovky("LEADERBOARD", farba_biela, 300, 315)
-        text_obrazovky(" EXIT", farba_biela, 355, 505)
+        text_obrazovky("PLAY", farba_biela, 370, 175)
+        text_obrazovky("LEADERBOARD", farba_biela, 305, 287)
+        text_obrazovky("ABOUT", farba_biela, 360, 400)
+        text_obrazovky(" EXIT", farba_biela, 362, 530)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP3:
+                if event.key == pygame.K_KP4:
                     zrusit_hru = True
                     quit()
                 if event.key == pygame.K_KP1:
@@ -425,14 +448,15 @@ def menu():
                 zrusit_hru = True
                 pygame.quit()
                 quit()
+
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg2, (0, 0))
-        text_obrazovky("CLASSIC", farba_biela, 330, 202)
-        text_obrazovky("MULTI APPLE", farba_biela, 305, 287)
-        text_obrazovky("FASTER BIGGER", farba_biela, 290, 375)
-        text_obrazovky("BACK", farba_biela, 350, 522)
+        text_obrazovky("CLASSIC", farba_biela, 344, 173)
+        text_obrazovky("MULTI APPLE", farba_biela, 317, 287)
+        text_obrazovky("FASTER BIGGER", farba_biela, 298, 400)
+        text_obrazovky("BACK", farba_biela, 364, 530)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
