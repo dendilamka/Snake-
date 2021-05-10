@@ -24,6 +24,7 @@ vyska = screen.get_height()
 bg = pygame.image.load("pozadie_menu.jpg")
 bg2 = pygame.image.load("pozadie_menulevely.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
+bg4 = pygame.image.load("pozadie_hry.png")
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
@@ -137,10 +138,10 @@ def game():
                 jablko_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            screen.blit(bg3, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
+            screen.blit(bg4, (0, 0))
+            text_obrazovky( str(score), farba_biela, 48, 11)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
 
             hlava = []
             hlava.append(snake_x)
@@ -276,13 +277,13 @@ def game2():
                 dlzka += 5
 
 
-            screen.blit(bg3, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
+            screen.blit(bg4, (0, 0))
+            text_obrazovky( str(score), farba_biela, 48, 11)
             pygame.draw.rect(screen, farba_cervena, [jablko1_x, jablko1_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko2_x, jablko2_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko3_x, jablko3_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko4_x, jablko4_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
 
             hlava = []
             hlava.append(snake_x)
@@ -379,10 +380,10 @@ def game3():
                 jablko_y = random.randint(60, vyska - 30)
                 dlzka += 10
 
-            screen.blit(bg3, (0, 0))
-            text_obrazovky("Score: " + str(score), farba_biela, 10, 8)
+            screen.blit(bg4, (0, 0))
+            text_obrazovky( str(score), farba_biela, 48, 11)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 5)
+            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
 
             hlava = []
             hlava.append(snake_x)
