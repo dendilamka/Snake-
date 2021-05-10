@@ -43,19 +43,23 @@ farba_cierna = (0, 0, 0)
 font1 = pygame.font.SysFont("Edo", 35)
 font2 = pygame.font.SysFont("Showcard Gothic", 80)
 font3 = pygame.font.SysFont("MV Boli", 30)
+#LEADERBOARD
+list_score1 = [0]
+list_score2 = [0]
+list_score3 = [0]
+premenna1 = 0
+premenna2 = 0
+premenna3 = 0
 #TEXTY
 def text_obrazovky(text, farba, x, y):
     text_obrazovky = font1.render(text, True, farba)
     screen.blit(text_obrazovky, [x,y])
-
 def text_obrazovky2(text, farba, x, y):
     text_obrazovky2 = font2.render(text, True, farba)
     screen.blit(text_obrazovky2, [x,y])
-
 def text_obrazovky3(text, farba, x, y):
     text_obrazovky3 = font3.render(text, True, farba)
     screen.blit(text_obrazovky3, [x,y])
-
 #PAUSE
 def pause():
     paused = True
@@ -76,13 +80,10 @@ def pause():
         text_obrazovky("Press C to continue or E to exit", farba_cierna, 205,380)
         pygame.display.update()
         clock.tick(10)
-
-
 #HAD
 def snake(screen, farba, list, velkost_hada):
     for x,y in list:
         pygame.draw.rect(screen, farba, [x,y, velkost_hada, velkost_hada])
-
 #HRA
 def game():
     posledný_pohyb = "ziadny"
@@ -102,6 +103,10 @@ def game():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna1
+            premenna1 = score
+            global list_score1
+            list_score1[0] = premenna1
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
@@ -209,6 +214,10 @@ def game2():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna2
+            premenna2 = score
+            global list_score2
+            list_score2[0] = premenna2
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("  GAME OVER", farba_cierna, 155, 250)
@@ -341,6 +350,10 @@ def game3():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna3
+            premenna3 = score
+            global list_score3
+            list_score3[0] = premenna3
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
@@ -444,11 +457,12 @@ def menu():
                     quit()
                 if event.key == pygame.K_KP1:
                     menu_levely()
+                if event.key == pygame.K_KP2:
+                    leaderboard()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
                 pygame.quit()
                 quit()
-
 def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
@@ -470,5 +484,25 @@ def menu_levely():
                     menu()
             if event.type == pygame.QUIT:
                 pygame.quit()
+def leaderboard():
+    zrusit_hru = False
+    while not zrusit_hru:
+        screen.blit(bg, (0, 0))
+        global list_score1
+        global list_score2
+        global list_score3
+        text_obrazovky("Classic: " + str(list_score1), farba_biela, 300, 175)
+        text_obrazovky("Multi apple: " + str(list_score2), farba_biela, 300, 287)
+        text_obrazovky("Faster Bigger: " + str(list_score3), farba_biela, 300, 400)
+        text_obrazovky(" BACK", farba_biela, 362, 530)
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP1:
+                    menu()
+            if event.type == pygame.QUIT:
+                zrusit_hru = True
+                pygame.quit()
+                quit()
 menu()
 
