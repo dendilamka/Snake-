@@ -103,10 +103,11 @@ def game():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            global premenna1
-            premenna1 = score
             global list_score1
-            list_score1[0] = premenna1
+            if (score > list_score1[0]):
+                global premenna1
+                premenna1 = score
+                list_score1[0] = premenna1
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
@@ -214,10 +215,11 @@ def game2():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            global premenna2
-            premenna2 = score
             global list_score2
-            list_score2[0] = premenna2
+            if (score > list_score2[0]):
+                global premenna2
+                premenna2 = score
+                list_score2[0] = premenna2
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("  GAME OVER", farba_cierna, 155, 250)
@@ -350,10 +352,11 @@ def game3():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
-            global premenna3
-            premenna3 = score
             global list_score3
-            list_score3[0] = premenna3
+            if (score > list_score3[0]):
+                global premenna3
+                premenna3 = score
+                list_score3[0] = premenna3
             screen.blit(bg3, (0, 0))
             text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
             text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
