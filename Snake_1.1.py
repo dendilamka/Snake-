@@ -26,6 +26,10 @@ bg = pygame.image.load("hlavnaplocha.jpg")
 bg2 = pygame.image.load("pozadie_menulevely.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
 bg4 = pygame.image.load("pozadie_hry.png")
+bg5 = pygame.image.load ("gameover.jpg")
+bg6 = pygame.image.load("About.jpg")
+bg7 = pygame.image.load("HOW TO PLAY.jpg")
+bg8 = pygame.image.load("gamepaused.jpg")
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
@@ -75,9 +79,7 @@ def pause():
                     pygame.quit()
                     quit()
 
-        screen.blit(bg3, (0, 0))
-        text_obrazovky2("GAME PAUSED", farba_cierna, 125, 200)
-        text_obrazovky("Press C to continue or E to exit", farba_cierna, 205,380)
+        screen.blit(bg8, (0, 0))
         pygame.display.update()
         clock.tick(10)
 #HAD
@@ -103,14 +105,12 @@ def game():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna1
+            premenna1 = score
             global list_score1
-            if (score > list_score1[0]):
-                global premenna1
-                premenna1 = score
-                list_score1[0] = premenna1
-            screen.blit(bg3, (0, 0))
-            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
-            text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
+            list_score1[0] = premenna1
+            screen.blit(bg5, (0, 0))
+            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -152,7 +152,7 @@ def game():
                             velocity_x = 0
                             posledný_pohyb = "dole"
 
-                    elif event.key == pygame.K_p:
+                    elif event.key == pygame.K_ESCAPE:
                         pause()
 
 
@@ -215,14 +215,12 @@ def game2():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna2
+            premenna2 = score
             global list_score2
-            if (score > list_score2[0]):
-                global premenna2
-                premenna2 = score
-                list_score2[0] = premenna2
-            screen.blit(bg3, (0, 0))
-            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
-            text_obrazovky2("  GAME OVER", farba_cierna, 155, 250)
+            list_score2[0] = premenna2
+            screen.blit(bg5, (0, 0))
+            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -270,7 +268,7 @@ def game2():
                             velocity_x = 0
                             posledný_pohyb = "dole"
 
-                    elif event.key == pygame.K_p:
+                    elif event.key == pygame.K_ESCAPE:
                         pause()
 
 
@@ -352,14 +350,12 @@ def game3():
     fps = 60
     while not zrusit_hru:
         if koniec_hry:
+            global premenna3
+            premenna3 = score
             global list_score3
-            if (score > list_score3[0]):
-                global premenna3
-                premenna3 = score
-                list_score3[0] = premenna3
-            screen.blit(bg3, (0, 0))
-            text_obrazovky3("YOUR SCORE: " + str(score), farba_cierna, 280, 350)
-            text_obrazovky2("GAME OVER", farba_cierna, 180, 250)
+            list_score3[0] = premenna3
+            screen.blit(bg5, (0, 0))
+            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -401,7 +397,7 @@ def game3():
                             velocity_x = 0
                             posledný_pohyb = "dole"
 
-                    elif event.key == pygame.K_p:
+                    elif event.key == pygame.K_ESCAPE:
                         pause()
 
 
@@ -462,6 +458,8 @@ def menu():
                     menu_levely()
                 if event.key == pygame.K_KP2:
                     leaderboard()
+                if event.key == pygame.K_KP3:
+                    about()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
                 pygame.quit()
@@ -487,6 +485,32 @@ def menu_levely():
                     menu()
             if event.type == pygame.QUIT:
                 pygame.quit()
+def about():
+    zrusit_hru = False
+    while not zrusit_hru:
+        screen.blit(bg6, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP1:
+                    menu()
+                if event.key == pygame.K_KP2:
+                    howtoplay()
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+def howtoplay():
+    zrusit_hru = False
+    while not zrusit_hru:
+        screen.blit(bg7, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP1:
+                    about()
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
 def leaderboard():
     zrusit_hru = False
     while not zrusit_hru:
@@ -501,11 +525,10 @@ def leaderboard():
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+                if event.key == pygame.K_KP4:
                     menu()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
                 pygame.quit()
                 quit()
 menu()
-
