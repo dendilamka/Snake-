@@ -28,7 +28,7 @@ bg3 = pygame.image.load("Pozadie.jpg")
 bg4 = pygame.image.load("pozadie_hry.png")
 bg5 = pygame.image.load ("gameover.jpg")
 bg6 = pygame.image.load("About.jpg")
-bg7 = pygame.image.load("HOW TO PLAY.jpg")
+bg7 = pygame.image.load("howtoplay.jpg")
 bg8 = pygame.image.load("gamepaused.jpg")
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
