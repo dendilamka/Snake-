@@ -33,6 +33,7 @@ bg8 = pygame.image.load("gamepaused.jpg")
 bg9 = pygame.image.load("Pozadie_settings.jpg")
 bg10 = pygame.image.load("Pozadie_musicsettings.jpg")
 bg11 = pygame.image.load("Pozadie_changecolor.jpg")
+bg12 = pygame.image.load("Pozadie_login.jpg")
 
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
@@ -739,6 +740,20 @@ def leaderboard2():
                 pygame.quit()
                 quit()
 
+def login():
+    zrusit_hru = False
+    while not zrusit_hru:
+        screen.blit(bg12, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    menu()
+                if event.type == pygame.QUIT:
+                    zrusit_hru = True
+                    pygame.quit()
+                    quit()
+
 def musicsettings():
     zrusit_hru = False
     while not zrusit_hru:
@@ -773,5 +788,5 @@ def menu2():
                 zrusit_hru = True
                 pygame.quit()
                 quit()
-
+login()
 menu()
