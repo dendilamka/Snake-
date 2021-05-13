@@ -127,6 +127,7 @@ def snake_farba():
                     menu2()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
+                uloz_skore()
                 pygame.quit()
                 quit()
 
@@ -150,9 +151,10 @@ def game():
     while not zrusit_hru:
         if koniec_hry:
             global premenna1
-            premenna1 = score
             global list_score1
-            list_score1[0] = premenna1
+            premenna1 = score
+            if (list_score1[0] < premenna1):
+                list_score1[0] = premenna1
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -233,6 +235,7 @@ def game():
             snake(screen, farba_hada, list, velkost_hada)
         pygame.display.update()
         clock.tick(fps)
+    uloz_skore()
     pygame.quit()
     quit()
 
@@ -261,9 +264,10 @@ def game2():
     while not zrusit_hru:
         if koniec_hry:
             global premenna2
-            premenna2 = score
             global list_score2
-            list_score2[0] = premenna2
+            premenna2 = score
+            if (list_score2[0] < premenna2):
+                list_score2[0] = premenna2
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -375,6 +379,7 @@ def game2():
             snake(screen, farba_hada, list, velkost_hada)
         pygame.display.update()
         clock.tick(fps)
+    uloz_skore()
     pygame.quit()
     quit()
 
@@ -397,9 +402,10 @@ def game3():
     while not zrusit_hru:
         if koniec_hry:
             global premenna3
-            premenna3 = score
             global list_score3
-            list_score3[0] = premenna3
+            premenna3 = score
+            if (list_score3[0] < premenna3):
+                list_score3[0] = premenna3
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -483,6 +489,7 @@ def game3():
             snake(screen, farba_hada, list, velkost_hada)
         pygame.display.update()
         clock.tick(fps)
+    uloz_skore()
     pygame.quit()
     quit()
 
@@ -515,9 +522,10 @@ def game4():
     while not zrusit_hru:
         if koniec_hry:
             global premenna4
-            premenna4 = score
             global list_score4
-            list_score4[0] = premenna4
+            premenna4 = score
+            if(list_score4[0] < premenna4):
+                list_score4[0] = premenna4
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -623,6 +631,7 @@ def game4():
             snake(screen, farba_hada, list, velkost_hada)
         pygame.display.update()
         clock.tick(fps)
+    uloz_skore()
     pygame.quit()
     quit()
 
@@ -635,6 +644,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP4:
+                    uloz_skore()
                     zrusit_hru = True
                     quit()
                 if event.key == pygame.K_KP1:
@@ -644,6 +654,7 @@ def menu():
                 if event.key == pygame.K_KP3:
                     menu2()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
                 pygame.quit()
                 quit()
@@ -666,6 +677,7 @@ def menu_levely():
                 if event.key == pygame.K_KP5:
                     menu()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 pygame.quit()
 
 def about():
@@ -680,6 +692,7 @@ def about():
                 if event.key == pygame.K_KP2:
                     howtoplay()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 pygame.quit()
 
 def howtoplay():
@@ -692,6 +705,7 @@ def howtoplay():
                 if event.key == pygame.K_KP1:
                     about()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 pygame.quit()
 
 def leaderboard():
@@ -713,6 +727,7 @@ def leaderboard():
                 if event.key == pygame.K_KP4:
                     menu()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
                 pygame.quit()
                 quit()
@@ -735,6 +750,7 @@ def leaderboard2():
                 if event.key == pygame.K_KP4:
                     menu()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
                 pygame.quit()
                 quit()
@@ -749,6 +765,7 @@ def musicsettings():
                 if event.key == pygame.K_KP3:
                     menu2()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
                 pygame.quit()
                 quit()
@@ -769,6 +786,7 @@ def menu2():
                 if event.key == pygame.K_KP3:
                     about()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
                 pygame.quit()
                 quit()
@@ -793,6 +811,7 @@ def login():
                 if event.key == pygame.K_KP1:
                     menu()
             if event.type == pygame.QUIT:
+                uloz_skore()
                 zrusit_hru = True
             if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -807,8 +826,12 @@ def login():
                 if active:
                     if event.key == pygame.K_RETURN:
                         print(text)
+                        a = open("Meno.txt", "a+")
                         Meno = text
+                        a.write(f"{Meno} \n")
+                        a.close()
                         text = ''
+                        menu()
                     elif event.key == pygame.K_BACKSPACE:
                         text = text[:-1]
                     else:
@@ -829,5 +852,12 @@ def login():
         pygame.display.flip()
         clock.tick(30)
 
+def uloz_skore():
+    a = open("Meno.txt", "a+")
+    a.write(f"Classic: {list_score1} \n")
+    a.write(f"Multi Apple: {list_score2} \n")
+    a.write(f"Faster Bigger: {list_score3} \n")
+    a.write(f"Dead Blocks: {list_score4} \n")
+    a.close()
 
 login()
