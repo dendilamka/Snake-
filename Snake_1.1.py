@@ -22,14 +22,17 @@ screen = pygame.display.set_mode(res)
 sirka = screen.get_width()
 vyska = screen.get_height()
 #POZADIE
-bg = pygame.image.load("hlavnaplocha.jpg")
-bg2 = pygame.image.load("pozadie_menulevely.jpg")
+bg = pygame.image.load("Pozadie_menu.jpg")
+bg2 = pygame.image.load("Pozadie_levels.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
-bg4 = pygame.image.load("pozadie_lvl.jpg")
+bg4 = pygame.image.load("pozadie_game.jpg")
 bg5 = pygame.image.load ("Pozadie_gameover.jpg")
-bg6 = pygame.image.load("About.jpg")
-bg7 = pygame.image.load("howtoplay.jpg")
+bg6 = pygame.image.load("Pozadie_about.jpg")
+bg7 = pygame.image.load("Pozadie_howtoplay.jpg")
 bg8 = pygame.image.load("gamepaused.jpg")
+bg9 = pygame.image.load("Pozadie_settings.jpg")
+bg10 = pygame.image.load("Pozadie_musicsettings.jpg")
+bg11 = pygame.image.load("Pozadie_changecolor.jpg")
 
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
@@ -47,6 +50,7 @@ farba_cierna = (0, 0, 0)
 farba_svetlo_modra = (0, 255, 255)
 farba_hada = (0, 128, 0)
 farba_siva = (165, 165, 165)
+farba_zlta = (255, 255, 0)
 #FONT
 font1 = pygame.font.SysFont("Edo", 35)
 font2 = pygame.font.SysFont("Showcard Gothic", 80)
@@ -100,15 +104,11 @@ def snake(screen, farba, list, velkost_hada):
 def snake_farba():
     zrusit_hru = False
     while not zrusit_hru:
-        screen.blit(bg, (0, 0))
-        text_obrazovky("Vyber farbu hada:", farba_biela, 292, 175)
-        text_obrazovky("[1] - zelená", farba_biela, 300, 287)
-        text_obrazovky("[2] - biela", farba_biela, 300, 400)
-        text_obrazovky("  [3] - tyrkisová", farba_biela, 305, 530)
+        screen.blit(bg11, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP4:
+                if event.key == pygame.K_KP5:
                     menu2()
                 global farba_hada
                 if event.key == pygame.K_KP1:
@@ -119,6 +119,9 @@ def snake_farba():
                     menu2()
                 if event.key == pygame.K_KP3:
                     farba_hada = farba_svetlo_modra
+                    menu2()
+                if event.key == pygame.K_KP4:
+                    farba_hada = farba_zlta
                     menu2()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
@@ -522,7 +525,8 @@ def game4():
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        menu_levely2()
+                        menu_levely()
+
 
         else:
 
@@ -625,10 +629,6 @@ def menu():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("PLAY", farba_biela, 370, 175)
-        text_obrazovky("LEADERBOARD", farba_biela, 305, 287)
-        text_obrazovky("OPTIONS", farba_biela, 340, 400)
-        text_obrazovky(" EXIT", farba_biela, 362, 530)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -650,10 +650,6 @@ def menu_levely():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg2, (0, 0))
-        text_obrazovky("CLASSIC", farba_biela, 344, 173)
-        text_obrazovky("MULTI APPLE", farba_biela, 317, 287)
-        text_obrazovky("NEXT", farba_biela, 370, 400)
-        text_obrazovky("BACK", farba_biela, 364, 530)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -662,33 +658,15 @@ def menu_levely():
                 if event.key == pygame.K_KP2:
                     game2()
                 if event.key == pygame.K_KP3:
-                    menu_levely2()
+                    game3()
                 if event.key == pygame.K_KP4:
+                    game4()
+                if event.key == pygame.K_KP5:
                     menu()
             if event.type == pygame.QUIT:
                 pygame.quit()
 
-def menu_levely2():
-    zrusit_hru = False
-    while not zrusit_hru:
-        screen.blit(bg2, (0, 0))
-        text_obrazovky("FASTER BIGGER", farba_biela, 305, 173)
-        text_obrazovky("DEAD BLOCKS", farba_biela, 310, 287)
-        text_obrazovky("BACK", farba_biela, 364, 400)
-        text_obrazovky("MENU", farba_biela, 364, 530)
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
-                    game3()
-                if event.key == pygame.K_KP2:
-                    game4()
-                if event.key == pygame.K_KP3:
-                    menu_levely()
-                if event.key == pygame.K_KP4:
-                    menu()
-            if event.type == pygame.QUIT:
-                pygame.quit()
+
 
 def about():
     zrusit_hru = False
@@ -761,21 +739,35 @@ def leaderboard2():
                 pygame.quit()
                 quit()
 
-def menu2():
+def musicsettings():
     zrusit_hru = False
     while not zrusit_hru:
-        screen.blit(bg, (0, 0))
-        text_obrazovky("SNAKE COLOR", farba_biela, 320, 175)
-        text_obrazovky("        ABOUT", farba_biela, 305, 287)
-        text_obrazovky(" BACK", farba_biela, 360, 400)
+        screen.blit(bg10, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_KP3:
+                    menu2()
+            if event.type == pygame.QUIT:
+                zrusit_hru = True
+                pygame.quit()
+                quit()
+
+
+def menu2():
+    zrusit_hru = False
+    while not zrusit_hru:
+        screen.blit(bg9, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP4:
                     menu()
                 if event.key == pygame.K_KP1:
                     snake_farba()
                 if event.key == pygame.K_KP2:
+                    musicsettings()
+                if event.key == pygame.K_KP3:
                     about()
             if event.type == pygame.QUIT:
                 zrusit_hru = True
