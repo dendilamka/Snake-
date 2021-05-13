@@ -25,11 +25,12 @@ vyska = screen.get_height()
 bg = pygame.image.load("hlavnaplocha.jpg")
 bg2 = pygame.image.load("pozadie_menulevely.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
-bg4 = pygame.image.load("pozadie_hry.png")
-bg5 = pygame.image.load ("gameover.jpg")
+bg4 = pygame.image.load("pozadie_lvl.jpg")
+bg5 = pygame.image.load ("Pozadie_gameover.jpg")
 bg6 = pygame.image.load("About.jpg")
 bg7 = pygame.image.load("howtoplay.jpg")
 bg8 = pygame.image.load("gamepaused.jpg")
+
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
@@ -45,6 +46,7 @@ farba_cervena = (255, 0, 0)
 farba_cierna = (0, 0, 0)
 farba_svetlo_modra = (0, 255, 255)
 farba_hada = (0, 128, 0)
+farba_siva = (165, 165, 165)
 #FONT
 font1 = pygame.font.SysFont("Edo", 35)
 font2 = pygame.font.SysFont("Showcard Gothic", 80)
@@ -147,7 +149,7 @@ def game():
             global list_score1
             list_score1[0] = premenna1
             screen.blit(bg5, (0, 0))
-            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
+            text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -204,9 +206,9 @@ def game():
                 dlzka += 5
 
             screen.blit(bg4, (0, 0))
-            text_obrazovky( str(score), farba_biela, 48, 11)
+            text_obrazovky( str(score), farba_siva, 85, 9)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
+            pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
 
             hlava = []
             hlava.append(snake_x)
@@ -258,7 +260,7 @@ def game2():
             global list_score2
             list_score2[0] = premenna2
             screen.blit(bg5, (0, 0))
-            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
+            text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -343,12 +345,12 @@ def game2():
 
 
             screen.blit(bg4, (0, 0))
-            text_obrazovky( str(score), farba_biela, 48, 11)
+            text_obrazovky(str(score), farba_siva, 85, 9)
             pygame.draw.rect(screen, farba_cervena, [jablko1_x, jablko1_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko2_x, jablko2_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko3_x, jablko3_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cervena, [jablko4_x, jablko4_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
+            pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
 
             hlava = []
             hlava.append(snake_x)
@@ -394,7 +396,7 @@ def game3():
             global list_score3
             list_score3[0] = premenna3
             screen.blit(bg5, (0, 0))
-            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
+            text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -454,9 +456,9 @@ def game3():
                 dlzka += 10
 
             screen.blit(bg4, (0, 0))
-            text_obrazovky( str(score), farba_biela, 48, 11)
+            text_obrazovky(str(score), farba_siva, 85, 9)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
+            pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
 
             hlava = []
             hlava.append(snake_x)
@@ -512,7 +514,7 @@ def game4():
             global list_score4
             list_score4[0] = premenna4
             screen.blit(bg5, (0, 0))
-            text_obrazovky3("" + str(score), farba_cierna, 476, 356)
+            text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -567,35 +569,35 @@ def game4():
                 jablko_y = random.randint(60, vyska - 30)
                 dlzka += 5
 
-            if abs(snake_x - dead1_x) < 40 and abs(snake_y - dead1_y) < 40:
+            if abs(snake_x - dead1_x) < 35 and abs(snake_y - dead1_y) < 35:
                 efekt2.play()
                 koniec_hry = True
 
-            if abs(snake_x - dead2_x) < 40 and abs(snake_y - dead2_y) < 40:
+            if abs(snake_x - dead2_x) < 35 and abs(snake_y - dead2_y) < 35:
                 efekt2.play()
                 koniec_hry = True
 
-            if abs(snake_x - dead3_x) < 40 and abs(snake_y - dead3_y) < 40:
+            if abs(snake_x - dead3_x) < 35 and abs(snake_y - dead3_y) < 35:
                 efekt2.play()
                 koniec_hry = True
 
-            if abs(snake_x - dead4_x) < 40 and abs(snake_y - dead4_y) < 40:
+            if abs(snake_x - dead4_x) < 35 and abs(snake_y - dead4_y) < 35:
                 efekt2.play()
                 koniec_hry = True
 
-            if abs(snake_x - dead5_x) < 40 and abs(snake_y - dead5_y) < 40:
+            if abs(snake_x - dead5_x) < 35 and abs(snake_y - dead5_y) < 35:
                 efekt2.play()
                 koniec_hry = True
 
             screen.blit(bg4, (0, 0))
-            text_obrazovky(str(score), farba_biela, 48, 11)
+            text_obrazovky(str(score), farba_siva, 85, 9)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
             pygame.draw.rect(screen, farba_cierna, [dead1_x, dead1_y, velkost_hada + 30, velkost_hada + 30])
             pygame.draw.rect(screen, farba_cierna, [dead2_x, dead2_y, velkost_hada + 30, velkost_hada + 30])
             pygame.draw.rect(screen, farba_cierna, [dead3_x, dead3_y, velkost_hada + 30, velkost_hada + 30])
             pygame.draw.rect(screen, farba_cierna, [dead4_x, dead4_y, velkost_hada + 30, velkost_hada + 30])
             pygame.draw.rect(screen, farba_cierna, [dead5_x, dead5_y, velkost_hada + 30, velkost_hada + 30])
-            pygame.draw.line(screen, farba_biela, (0, 40), (800, 40), 2)
+            pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
 
             hlava = []
             hlava.append(snake_x)
@@ -763,7 +765,7 @@ def menu2():
     zrusit_hru = False
     while not zrusit_hru:
         screen.blit(bg, (0, 0))
-        text_obrazovky("FARBA HADA", farba_biela, 320, 175)
+        text_obrazovky("SNAKE COLOR", farba_biela, 320, 175)
         text_obrazovky("        ABOUT", farba_biela, 305, 287)
         text_obrazovky(" BACK", farba_biela, 360, 400)
         pygame.display.update()
