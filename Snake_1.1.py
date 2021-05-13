@@ -2,6 +2,7 @@ import pygame
 import random
 from pygame import mixer
 import time
+text = ""
 #intialize the pygame
 pygame.init()
 #Spustenie hudby
@@ -667,8 +668,6 @@ def menu_levely():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
-
-
 def about():
     zrusit_hru = False
     while not zrusit_hru:
@@ -740,20 +739,6 @@ def leaderboard2():
                 pygame.quit()
                 quit()
 
-def login():
-    zrusit_hru = False
-    while not zrusit_hru:
-        screen.blit(bg12, (0, 0))
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    menu()
-                if event.type == pygame.QUIT:
-                    zrusit_hru = True
-                    pygame.quit()
-                    quit()
-
 def musicsettings():
     zrusit_hru = False
     while not zrusit_hru:
@@ -767,7 +752,6 @@ def musicsettings():
                 zrusit_hru = True
                 pygame.quit()
                 quit()
-
 
 def menu2():
     zrusit_hru = False
@@ -788,5 +772,62 @@ def menu2():
                 zrusit_hru = True
                 pygame.quit()
                 quit()
+
+def login():
+    screen = pygame.display.set_mode((800, 600))
+    font = pygame.font.SysFont("Showcard Gothic", 80)
+    clock = pygame.time.Clock()
+    input_box = pygame.Rect(230, 300, 140, 60)
+    zrusit_hru = False
+    active = False
+    global Meno
+    Meno = ''
+    global text
+    text = ''
+    color_inactive = farba_siva
+    color_active = farba_hada
+    color = color_inactive
+    while not zrusit_hru:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP1:
+                    menu()
+            if event.type == pygame.QUIT:
+                zrusit_hru = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if input_box.collidepoint(event.pos):
+
+                    active = not active
+                else:
+                    active = False
+
+                color = color_active if active else color_inactive
+            if event.type == pygame.KEYDOWN:
+                if active:
+                    if event.key == pygame.K_RETURN:
+                        print(text)
+                        Meno = text
+                        text = ''
+                    elif event.key == pygame.K_BACKSPACE:
+                        text = text[:-1]
+                    else:
+                        text += event.unicode
+
+        screen.blit(bg12, (0, 0))
+        pygame.display.update()
+        # Render the current text.
+        txt_surface = font.render(text, True, color)
+        # Resize the box if the text is too long.
+        width = max(340, txt_surface.get_width() + 10)
+        input_box.w = width
+        # Blit the text.
+        screen.blit(txt_surface, (input_box.x + 5, input_box.y + 5))
+        # Blit the input_box rect.
+        pygame.draw.rect(screen, color, input_box, 2)
+
+        pygame.display.flip()
+        clock.tick(30)
+
+
 login()
-menu()
