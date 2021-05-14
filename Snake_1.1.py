@@ -35,6 +35,7 @@ bg9 = pygame.image.load("Pozadie_settings.jpg")
 bg10 = pygame.image.load("Pozadie_musicsettings.jpg")
 bg11 = pygame.image.load("Pozadie_changecolor.jpg")
 bg12 = pygame.image.load("Pozadie_login.jpg")
+bg13 = pygame.image.load("Pozadie_leaderboard.jpg")
 
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
@@ -58,10 +59,10 @@ font1 = pygame.font.SysFont("Edo", 35)
 font2 = pygame.font.SysFont("Showcard Gothic", 80)
 font3 = pygame.font.SysFont("MV Boli", 30)
 #LEADERBOARD
-list_score1 = [0]
-list_score2 = [0]
-list_score3 = [0]
-list_score4 = [0]
+list_score1 = 0
+list_score2 = 0
+list_score3 = 0
+list_score4 = 0
 premenna1 = 0
 premenna2 = 0
 premenna3 = 0
@@ -153,8 +154,8 @@ def game():
             global premenna1
             global list_score1
             premenna1 = score
-            if (list_score1[0] < premenna1):
-                list_score1[0] = premenna1
+            if (list_score1 < premenna1):
+                list_score1 = premenna1
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -266,8 +267,8 @@ def game2():
             global premenna2
             global list_score2
             premenna2 = score
-            if (list_score2[0] < premenna2):
-                list_score2[0] = premenna2
+            if (list_score2 < premenna2):
+                list_score2 = premenna2
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -404,8 +405,8 @@ def game3():
             global premenna3
             global list_score3
             premenna3 = score
-            if (list_score3[0] < premenna3):
-                list_score3[0] = premenna3
+            if (list_score3 < premenna3):
+                list_score3 = premenna3
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -524,8 +525,8 @@ def game4():
             global premenna4
             global list_score4
             premenna4 = score
-            if(list_score4[0] < premenna4):
-                list_score4[0] = premenna4
+            if(list_score4 < premenna4):
+                list_score4 = premenna4
             screen.blit(bg5, (0, 0))
             text_obrazovky3("" + str(score), farba_cierna, 471, 320)
 
@@ -711,43 +712,19 @@ def howtoplay():
 def leaderboard():
     zrusit_hru = False
     while not zrusit_hru:
-        screen.blit(bg, (0, 0))
+        screen.blit(bg13, (0, 0))
         global list_score1
         global list_score2
         global list_score3
-        text_obrazovky("Classic: " + str(list_score1), farba_biela, 300, 175)
-        text_obrazovky("Multi apple: " + str(list_score2), farba_biela, 300, 287)
-        text_obrazovky(" NEXT", farba_biela, 362, 400)
-        text_obrazovky(" BACK", farba_biela, 362, 530)
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP3:
-                    leaderboard2()
-                if event.key == pygame.K_KP4:
-                    menu()
-            if event.type == pygame.QUIT:
-                uloz_skore()
-                zrusit_hru = True
-                pygame.quit()
-                quit()
-
-def leaderboard2():
-    zrusit_hru = False
-    while not zrusit_hru:
-        screen.blit(bg, (0, 0))
-        global list_score3
         global list_score4
-        text_obrazovky("FASTER BIGGER:" + str(list_score3), farba_biela, 300, 175)
-        text_obrazovky("DEAD BLOCKS:" + str(list_score4), farba_biela, 300, 287)
-        text_obrazovky(" BACK", farba_biela, 362, 400)
-        text_obrazovky(" MENU", farba_biela, 362, 530)
+        text_obrazovky("" + str(list_score1), farba_cervena, 506, 239)
+        text_obrazovky("" + str(list_score2), farba_cervena, 506, 283)
+        text_obrazovky("" + str(list_score3), farba_cervena, 506, 334)
+        text_obrazovky("" + str(list_score4), farba_cervena, 506, 386)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP3:
-                    leaderboard()
-                if event.key == pygame.K_KP4:
+                if event.key == pygame.K_KP5:
                     menu()
             if event.type == pygame.QUIT:
                 uloz_skore()
