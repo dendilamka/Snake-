@@ -739,6 +739,14 @@ def musicsettings():
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_KP1:
+                    mixer.music.play()
+                    efekt.set_volume(0.2)
+                    efekt2.set_volume(0.1)
+                if event.key == pygame.K_KP2:
+                    mixer.music.stop()
+                    efekt.set_volume(0.0)
+                    efekt2.set_volume(0.0)
                 if event.key == pygame.K_KP3:
                     menu2()
             if event.type == pygame.QUIT:
@@ -770,7 +778,7 @@ def menu2():
 
 def login():
     screen = pygame.display.set_mode((800, 600))
-    font = pygame.font.SysFont("Showcard Gothic", 80)
+    font = pygame.font.SysFont("Showcard Gothic", 60)
     clock = pygame.time.Clock()
     input_box = pygame.Rect(230, 300, 140, 60)
     zrusit_hru = False
