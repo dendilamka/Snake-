@@ -724,7 +724,7 @@ def leaderboard():
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP5:
+                if event.key == pygame.K_KP1:
                     menu()
             if event.type == pygame.QUIT:
                 uloz_skore()
