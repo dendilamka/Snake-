@@ -62,10 +62,12 @@ list_score1 = 0
 list_score2 = 0
 list_score3 = 0
 list_score4 = 0
+list_score5 = 0
 premenna1 = 0
 premenna2 = 0
 premenna3 = 0
 premenna4 = 0
+premenna5 = 0
 #TEXTY
 def text_obrazovky(text, farba, x, y):
     text_obrazovky = font1.render(text, True, farba)
@@ -103,9 +105,12 @@ def snake(screen, farba, list, velkost_hada):
     for x,y in list:
         pygame.draw.rect(screen, farba, [x,y, velkost_hada, velkost_hada])
 
+def snake2(screen, farba, list2, velkost_hada2):
+    for x,y in list2:
+        pygame.draw.rect(screen, farba, [x,y, velkost_hada2, velkost_hada2])
+
 def snake_farba():
     zrusit_hru = False
-    global farba_hada
     while not zrusit_hru:
         screen.blit(bg11, (0, 0))
         pygame.display.update()
@@ -636,6 +641,233 @@ def game4():
     pygame.quit()
     quit()
 
+def game5():
+    posledný_pohyb = "ziadny"
+    posledný_pohyb2 = "ziadny"
+    zrusit_hru = False
+    koniec_hry = False
+    snake_x = 400
+    snake_y = 250
+    snake2_x = 400
+    snake2_y = 350
+    velocity_x = 0
+    velocity_y = 0
+    velocity2_x = 0
+    velocity2_y = 0
+    list = []
+    list2 = []
+    dlzka = 1
+    dlzka2 = 1
+    jablko1_x = random.randint(20, sirka - 20)
+    jablko1_y = random.randint(60, vyska - 20)
+    jablko2_x = random.randint(20, sirka - 20)
+    jablko2_y = random.randint(60, vyska - 20)
+    jablko3_x = random.randint(20, sirka - 20)
+    jablko3_y = random.randint(60, vyska - 20)
+    jablko4_x = random.randint(20, sirka - 20)
+    jablko4_y = random.randint(60, vyska - 20)
+    score = 0
+    init_velocity = 4
+    velkost_hada = 30
+    init_velocity2 = 4
+    velkost_hada2 = 30
+    fps = 60
+    while not zrusit_hru:
+        if koniec_hry:
+            global premenna5
+            global list_score5
+            premenna5 = score
+            if (list_score5 < premenna5):
+                list_score5 = premenna5
+            screen.blit(bg5, (0, 0))
+            text_obrazovky3("" + str(score), farba_cierna, 471, 320)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    zrusit_hru = True
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        menu_levely()
+
+
+        else:
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.QUIT:
+                    zrusit_hru = True
+
+                if event.type == pygame.KEYDOWN:
+
+                    if event.key == pygame.K_RIGHT:
+
+                        if (posledný_pohyb != "do lava"):
+                            velocity_x = init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do prava"
+
+                    if event.key == pygame.K_LEFT:
+
+                        if (posledný_pohyb != "do prava"):
+                            velocity_x = - init_velocity
+                            velocity_y = 0
+                            posledný_pohyb = "do lava"
+
+                    if event.key == pygame.K_UP:
+
+                        if (posledný_pohyb != "dole"):
+                            velocity_y = - init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "hore"
+
+                    if event.key == pygame.K_DOWN:
+
+                        if (posledný_pohyb != "hore"):
+                            velocity_y = init_velocity
+                            velocity_x = 0
+                            posledný_pohyb = "dole"
+
+                    if event.key == pygame.K_d:
+
+                        if (posledný_pohyb2 != "do lava"):
+                            velocity2_x = init_velocity2
+                            velocity2_y = 0
+                            posledný_pohyb2 = "do prava"
+
+                    if event.key == pygame.K_a:
+
+                        if (posledný_pohyb2 != "do prava"):
+                            velocity2_x = - init_velocity2
+                            velocity2_y = 0
+                            posledný_pohyb2 = "do lava"
+
+                    if event.key == pygame.K_w:
+
+                        if (posledný_pohyb2 != "dole"):
+                            velocity2_y = - init_velocity2
+                            velocity2_x = 0
+                            posledný_pohyb2 = "hore"
+
+                    if event.key == pygame.K_s:
+
+                        if (posledný_pohyb2 != "hore"):
+                            velocity2_y = init_velocity2
+                            velocity2_x = 0
+                            posledný_pohyb2 = "dole"
+
+                    elif event.key == pygame.K_ESCAPE:
+                        pause()
+
+            snake_x = snake_x + velocity_x
+            snake_y = snake_y + velocity_y
+            snake2_x = snake2_x + velocity2_x
+            snake2_y = snake2_y + velocity2_y
+
+            if abs(snake_x - jablko1_x) < 20 and abs(snake_y - jablko1_y) < 20:
+                efekt.play()
+                score += 1
+                jablko1_x = random.randint(20, sirka - 30)
+                jablko1_y = random.randint(60, vyska - 30)
+                dlzka += 5
+
+            if abs(snake_x - jablko2_x) < 20 and abs(snake_y - jablko2_y) < 20:
+                efekt.play()
+                score += 1
+                jablko2_x = random.randint(20, sirka - 30)
+                jablko2_y = random.randint(60, vyska - 30)
+                dlzka += 5
+
+            if abs(snake_x - jablko3_x) < 20 and abs(snake_y - jablko3_y) < 20:
+                efekt.play()
+                score += 1
+                jablko3_x = random.randint(20, sirka - 30)
+                jablko3_y = random.randint(60, vyska - 30)
+                dlzka += 5
+
+            if abs(snake_x - jablko4_x) < 20 and abs(snake_y - jablko4_y) < 20:
+                efekt.play()
+                score += 1
+                jablko4_x = random.randint(20, sirka - 30)
+                jablko4_y = random.randint(60, vyska - 30)
+                dlzka += 5
+
+            if abs(snake2_x - jablko1_x) < 20 and abs(snake2_y - jablko1_y) < 20:
+                efekt.play()
+                score += 1
+                jablko1_x = random.randint(20, sirka - 30)
+                jablko1_y = random.randint(60, vyska - 30)
+                dlzka2 += 5
+
+            if abs(snake2_x - jablko2_x) < 20 and abs(snake2_y - jablko2_y) < 20:
+                efekt.play()
+                score += 1
+                jablko2_x = random.randint(20, sirka - 30)
+                jablko2_y = random.randint(60, vyska - 30)
+                dlzka2 += 5
+
+            if abs(snake2_x - jablko3_x) < 20 and abs(snake2_y - jablko3_y) < 20:
+                efekt.play()
+                score += 1
+                jablko3_x = random.randint(20, sirka - 30)
+                jablko3_y = random.randint(60, vyska - 30)
+                dlzka2 += 5
+
+            if abs(snake2_x - jablko4_x) < 20 and abs(snake2_y - jablko4_y) < 20:
+                efekt.play()
+                score += 1
+                jablko4_x = random.randint(20, sirka - 30)
+                jablko4_y = random.randint(60, vyska - 30)
+                dlzka2 += 5
+
+            screen.blit(bg4, (0, 0))
+            text_obrazovky(str(score), farba_siva, 85, 9)
+            pygame.draw.rect(screen, farba_cervena, [jablko1_x, jablko1_y, velkost_hada, velkost_hada])
+            pygame.draw.rect(screen, farba_cervena, [jablko2_x, jablko2_y, velkost_hada, velkost_hada])
+            pygame.draw.rect(screen, farba_cervena, [jablko3_x, jablko3_y, velkost_hada, velkost_hada])
+            pygame.draw.rect(screen, farba_cervena, [jablko4_x, jablko4_y, velkost_hada, velkost_hada])
+            pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
+
+            hlava = []
+            hlava.append(snake_x)
+            hlava.append(snake_y)
+            list.append(hlava)
+
+            if len(list) > dlzka:
+                del list[0]
+
+            if hlava in list[:-1]:
+                efekt2.play()
+                koniec_hry = True
+
+            if snake_x < 0 or snake_x > sirka - 20 or snake_y < 50 or snake_y > vyska - 20:
+                efekt2.play()
+                koniec_hry = True
+            snake(screen, farba_hada, list, velkost_hada)
+
+            hlava2 = []
+            hlava2.append(snake2_x)
+            hlava2.append(snake2_y)
+            list2.append(hlava2)
+
+            if len(list2) > dlzka2:
+                del list2[0]
+
+            if hlava2 in list2[:-1]:
+                efekt2.play()
+                koniec_hry = True
+
+            if snake2_x < 0 or snake2_x > sirka - 20 or snake2_y < 50 or snake2_y > vyska - 20:
+                efekt2.play()
+                koniec_hry = True
+            snake2(screen, farba_zlta, list2, velkost_hada2)
+
+        pygame.display.update()
+        clock.tick(fps)
+    uloz_skore()
+    pygame.quit()
+    quit()
+
 #Menu
 def menu():
     zrusit_hru = False
@@ -645,7 +877,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
-                if mx >= 273 and mx <= 526 and my >= 178 and my <= 232:
+                if mx >= 273 and mx <= 525 and my >= 200 and my <= 230:
                     menu_levely()
                 if mx >= 273 and mx <= 525 and my >= 274 and my <= 325:
                     leaderboard()
@@ -719,10 +951,12 @@ def leaderboard():
         global list_score2
         global list_score3
         global list_score4
+        global list_score5
         text_obrazovky("" + str(list_score1), farba_cervena, 506, 239)
         text_obrazovky("" + str(list_score2), farba_cervena, 506, 283)
         text_obrazovky("" + str(list_score3), farba_cervena, 506, 334)
         text_obrazovky("" + str(list_score4), farba_cervena, 506, 386)
+        text_obrazovky("" + str(list_score5), farba_cervena, 506, 420)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -845,6 +1079,7 @@ def uloz_skore():
     a.write(f"Multi Apple: {list_score2} \n")
     a.write(f"Faster Bigger: {list_score3} \n")
     a.write(f"Dead Blocks: {list_score4} \n")
+    a.write(f"2 PLAYES: {list_score5} \n")
     a.close()
 
 login()
