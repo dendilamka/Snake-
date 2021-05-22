@@ -645,7 +645,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
-                if mx >= 273 and mx <= 525 and my >= 200 and my <= 230:
+                if mx >= 273 and mx <= 526 and my >= 178 and my <= 232:
                     menu_levely()
                 if mx >= 273 and mx <= 525 and my >= 274 and my <= 325:
                     leaderboard()
