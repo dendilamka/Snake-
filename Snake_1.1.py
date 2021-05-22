@@ -36,7 +36,6 @@ bg10 = pygame.image.load("Pozadie_musicsettings.jpg")
 bg11 = pygame.image.load("Pozadie_changecolor.jpg")
 bg12 = pygame.image.load("Pozadie_login.jpg")
 bg13 = pygame.image.load("Pozadie_leaderboard.jpg")
-
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
@@ -110,20 +109,20 @@ def snake_farba():
         screen.blit(bg11, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP5:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 308 and mx <= 490 and my >= 529 and my <= 576:
                     menu2()
-                global farba_hada
-                if event.key == pygame.K_KP1:
+                if mx >= 287 and mx <= 513 and my >= 146 and my <= 193:
                     farba_hada = farba_zelena
                     menu2()
-                if event.key == pygame.K_KP2:
+                if mx >= 287 and mx <= 513 and my >= 223 and my <= 270:
                     farba_hada = farba_biela
                     menu2()
-                if event.key == pygame.K_KP3:
+                if mx >= 287 and mx <= 513 and my >= 306 and my <= 354:
                     farba_hada = farba_svetlo_modra
                     menu2()
-                if event.key == pygame.K_KP4:
+                if mx >= 287 and mx <= 513 and my >= 383 and my <= 431:
                     farba_hada = farba_zlta
                     menu2()
             if event.type == pygame.QUIT:
@@ -643,17 +642,16 @@ def menu():
         screen.blit(bg, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP4:
-                    uloz_skore()
-                    zrusit_hru = True
-                    quit()
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 273 and mx <= 525 and my >= 200 and my <= 230:
                     menu_levely()
-                if event.key == pygame.K_KP2:
+                if mx >= 273 and mx <= 525 and my >= 274 and my <= 325:
                     leaderboard()
-                if event.key == pygame.K_KP3:
+                if mx >= 273 and mx <= 525 and my >= 369 and my <= 422:
                     menu2()
+                if mx >= 273 and mx <= 525 and my >= 513 and my <= 572:
+                    quit()
             if event.type == pygame.QUIT:
                 uloz_skore()
                 zrusit_hru = True
@@ -666,16 +664,17 @@ def menu_levely():
         screen.blit(bg2, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 287 and mx <= 513 and my >= 145 and my <= 192:
                     game()
-                if event.key == pygame.K_KP2:
+                if mx >= 287 and mx <= 513 and my >= 226 and my <= 274:
                     game2()
-                if event.key == pygame.K_KP3:
+                if mx >= 287 and mx <= 513 and my >= 309 and my <= 356:
                     game3()
-                if event.key == pygame.K_KP4:
+                if mx >= 287 and mx <= 513 and my >= 392 and my <= 439:
                     game4()
-                if event.key == pygame.K_KP5:
+                if mx >= 287 and mx <= 513 and my >= 529 and my <= 577:
                     menu()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -687,10 +686,11 @@ def about():
         screen.blit(bg6, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 52 and mx <= 234 and my >= 528 and my <= 576:
                     menu()
-                if event.key == pygame.K_KP2:
+                if mx >= 565 and mx <= 748 and my >= 529 and my <= 576:
                     howtoplay()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -702,8 +702,9 @@ def howtoplay():
         screen.blit(bg7, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 308 and mx <= 491 and my >= 529 and my <= 576:
                     about()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -723,8 +724,9 @@ def leaderboard():
         text_obrazovky("" + str(list_score4), farba_cervena, 506, 386)
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 309 and mx <= 491 and my >= 528 and my <= 576:
                     menu()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -738,16 +740,17 @@ def musicsettings():
         screen.blit(bg10, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 286 and mx <= 514 and my >= 173 and my <= 220 :
                     mixer.music.play()
                     efekt.set_volume(0.2)
                     efekt2.set_volume(0.1)
-                if event.key == pygame.K_KP2:
+                if mx >= 286 and mx <= 514 and my >= 265 and my <= 313:
                     mixer.music.stop()
                     efekt.set_volume(0.0)
                     efekt2.set_volume(0.0)
-                if event.key == pygame.K_KP3:
+                if mx >= 306 and mx <= 492  and my >= 529 and my <= 576:
                     menu2()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -761,14 +764,15 @@ def menu2():
         screen.blit(bg9, (0, 0))
         pygame.display.update()
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP4:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                if mx >= 306 and mx <= 492  and my >= 529 and my <= 576:
                     menu()
-                if event.key == pygame.K_KP1:
+                if mx >= 286 and mx <= 514  and my >= 173 and my <= 220:
                     snake_farba()
-                if event.key == pygame.K_KP2:
+                if mx >= 286 and mx <= 514 and my >= 265 and my <= 313:
                     musicsettings()
-                if event.key == pygame.K_KP3:
+                if mx >= 286 and mx <= 514 and my >= 357 and my <= 406:
                     about()
             if event.type == pygame.QUIT:
                 uloz_skore()
@@ -792,9 +796,6 @@ def login():
     color = color_inactive
     while not zrusit_hru:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_KP1:
-                    menu()
             if event.type == pygame.QUIT:
                 uloz_skore()
                 zrusit_hru = True
