@@ -35,7 +35,7 @@ bg9 = pygame.image.load("Pozadie_settings.jpg")
 bg10 = pygame.image.load("Pozadie_musicsettings.jpg")
 bg11 = pygame.image.load("Pozadie_changecolor.jpg")
 bg12 = pygame.image.load("Pozadie_login.jpg")
-bg13 = pygame.image.load("Pozadie_leaderboard.jpg")
+bg13 = pygame.image.load("pozadie_leaderboar.jpg")
 #NÁZOV a Icona
 pygame.display.set_caption("Hungry Snake")
 icon = pygame.image.load("Snake-icon.png")
@@ -956,7 +956,7 @@ def leaderboard():
         text_obrazovky("" + str(list_score2), farba_cervena, 506, 283)
         text_obrazovky("" + str(list_score3), farba_cervena, 506, 334)
         text_obrazovky("" + str(list_score4), farba_cervena, 506, 386)
-        text_obrazovky("" + str(list_score5), farba_cervena, 506, 420)
+        text_obrazovky("" + str(list_score5), farba_cervena, 506, 437)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
