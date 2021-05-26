@@ -24,7 +24,7 @@ sirka = screen.get_width()
 vyska = screen.get_height()
 #POZADIE
 bg = pygame.image.load("Pozadie_menu.jpg")
-bg2 = pygame.image.load("Pozadie_levels.jpg")
+bg2 = pygame.image.load("Pozadie_level.jpg")
 bg3 = pygame.image.load("Pozadie.jpg")
 bg4 = pygame.image.load("pozadie_game.jpg")
 bg5 = pygame.image.load ("Pozadie_gameover.jpg")
@@ -877,7 +877,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
-                if mx >= 273 and mx <= 525 and my >= 200 and my <= 230:
+                if mx >= 273 and mx <= 525 and my >= 176 and my <= 232:
                     menu_levely()
                 if mx >= 273 and mx <= 525 and my >= 274 and my <= 325:
                     leaderboard()
@@ -899,14 +899,16 @@ def menu_levely():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
-                if mx >= 287 and mx <= 513 and my >= 145 and my <= 192:
+                if mx >= 284 and mx <= 516 and my >= 130 and my <= 180:
                     game()
-                if mx >= 287 and mx <= 513 and my >= 226 and my <= 274:
+                if mx >= 284 and mx <= 516 and my >= 207 and my <= 256:
                     game2()
-                if mx >= 287 and mx <= 513 and my >= 309 and my <= 356:
+                if mx >= 284 and mx <= 516 and my >= 284 and my <= 334:
                     game3()
-                if mx >= 287 and mx <= 513 and my >= 392 and my <= 439:
+                if mx >= 284 and mx <= 516 and my >= 359 and my <= 409:
                     game4()
+                if mx >= 284 and mx <= 516 and my >= 437 and my <= 485:
+                    game5()
                 if mx >= 287 and mx <= 513 and my >= 529 and my <= 577:
                     menu()
             if event.type == pygame.QUIT:
