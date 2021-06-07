@@ -612,11 +612,32 @@ def game4():
             screen.blit(bg4, (0, 0))
             text_obrazovky(str(score), farba_siva, 85, 9)
             pygame.draw.rect(screen, farba_cervena, [jablko_x, jablko_y, velkost_hada, velkost_hada])
+
+            while( ( (dead1_y == jablko_y) or (dead1_x == jablko_x) ) or ( (dead1_y == 300) or (dead1_x == 400) )):
+                dead1_x = random.randint(20, sirka - 20)
+                dead1_y = random.randint(60, vyska - 20)
             pygame.draw.rect(screen, farba_cierna, [dead1_x, dead1_y, velkost_hada + 30, velkost_hada + 30])
+
+            while( ( (dead2_y == jablko_y) or (dead2_x == jablko_x) ) or ( (dead2_y == 300) or (dead2_x == 400) )):
+                dead2_x = random.randint(20, sirka - 20)
+                dead2_y = random.randint(60, vyska - 20)
             pygame.draw.rect(screen, farba_cierna, [dead2_x, dead2_y, velkost_hada + 30, velkost_hada + 30])
+
+            while( ( (dead3_y == jablko_y) or (dead3_x == jablko_x) ) or ( (dead3_y == 300) or (dead3_x == 400) )):
+                dead3_x = random.randint(20, sirka - 20)
+                dead3_y = random.randint(60, vyska - 20)
             pygame.draw.rect(screen, farba_cierna, [dead3_x, dead3_y, velkost_hada + 30, velkost_hada + 30])
+
+            while( ( (dead4_y == jablko_y) or (dead4_x == jablko_x) ) or ( (dead4_y == 300) or (dead4_x == 400) )):
+                dead4_x = random.randint(20, sirka - 20)
+                dead4_y = random.randint(60, vyska - 20)
             pygame.draw.rect(screen, farba_cierna, [dead4_x, dead4_y, velkost_hada + 30, velkost_hada + 30])
+
+            while ( ( (dead5_y == jablko_y) or (dead5_x == jablko_x) ) or ( (dead5_y == 300) or (dead5_x == 400) )):
+                dead5_x = random.randint(20, sirka - 20)
+                dead5_y = random.randint(60, vyska - 20)
             pygame.draw.rect(screen, farba_cierna, [dead5_x, dead5_y, velkost_hada + 30, velkost_hada + 30])
+
             pygame.draw.line(screen, farba_siva, (0, 40), (800, 40), 4)
 
             hlava = []
