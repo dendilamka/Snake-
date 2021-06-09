@@ -111,6 +111,7 @@ def snake2(screen, farba, list2, velkost_hada2):
 
 def snake_farba():
     zrusit_hru = False
+    global farba_hada
     while not zrusit_hru:
         screen.blit(bg11, (0, 0))
         pygame.display.update()
